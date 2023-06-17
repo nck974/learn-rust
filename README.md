@@ -98,7 +98,7 @@ Summary:
 Summary:
 
 1. Chapter 7:
-1. A create is the smallest unit considered by the compiler.
+1. A crate is the smallest unit considered by the compiler.
 1. Two types of crate:
 1. Binary: Programs done until now.
 1. Library: (Used by other rust programs.)
@@ -120,7 +120,40 @@ Summary:
 1. Also a wildcard can be used to import `use std::collections::*`
 1. Chapter 8:
 1. Three types of collections:
-1. Vector: variable number of elements.
+1. Vector: variable number of elements (only of one type).
 1. String: Collection of characters.
 1. Hashmap: collection with keys (dict).
 1. Syntax to create a vector `vec![1, 2, 3];`.
+1. To modify a vector in a loop it has to be dereferenced.
+1. There are two strings:
+    1. String slices `str` or usually `&str`.
+    1. String as a MUTABLE type `String` (Comes from std library rather than the core).
+1. Both are UTF8 encoded.
+1. Iterating over strings is not done by looping through the string as there are issues with characters that take more bytes, therefore rust provides methods in the String to access bytes, chars...
+1. There is a type `HashMap` in the std library (collections), that works as a dictionary in python.
+1. Values entered in a hashmap that implement `copy` will be copied, others like String will be moved and be left invalid.
+
+## Day 5
+
+Buy: Ultimate Rust Crash Course
+
+1. Complete the following sections:
+    1. Introduction.
+    1. Fundamentals.
+    1. Primitive types and Control Flow.
+    1. The heart of rust.
+1. Implement two pointer pattern.
+
+## Day 6
+
+1. Complete udemy exercises:
+    1. Exercise A.
+    1. Exercise B.
+    1. Exercise C.
+
+## Day 7
+
+1. Complete rust book exercises of chapter 8.
+1. Complete udemy exercises:
+    1. Exercise D.
+    1. Exercise E.
