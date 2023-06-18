@@ -154,6 +154,32 @@ Buy: Ultimate Rust Crash Course
 ## Day 7
 
 1. Complete rust book exercises of chapter 8.
-1. Complete udemy exercises:
+1. Complete Udemy exercises:
     1. Exercise D.
     1. Exercise E.
+
+## Day 8
+
+1. Chapter 9:
+    1. Two types of errors:
+        1. Recoverable: A `Result<T, E>` is returned.
+        1. Not recoverable: The program panics (exit).
+    1. On panic per default rust cleans the memory. But it can be left to the OS configuring it:
+
+        ```toml
+        [profile.release]
+
+        panic = 'abort'
+        ````
+
+    1. The macro for crashing is `panic!`.
+    1. $Env:RUST_BACKTRACE=1 can be set to show the whole stacktrace on panic.
+    1. The operator `?` can be used as as a shortcut to propagate errors from a function. This removes boilerplate. Only works with functions that return a `Result` or `Option`.
+
+## Day 9
+
+1. Complete the following Udemy sections:
+    1. The meat of Rust.
+1. Complete Udemy exercises:
+    1. Exercise F.
+    1. Exercise G.
