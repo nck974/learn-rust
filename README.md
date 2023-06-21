@@ -183,3 +183,49 @@ Buy: Ultimate Rust Crash Course
 1. Complete Udemy exercises:
     1. Exercise F.
     1. Exercise G.
+1. Chapter 10:
+    1. Generics in a function are indicated just before the parameters: `fn function<T>(list: &[T]) -> &T` and `T` is usually used.
+    1. Generics can be used to provide dynamic types to the arguments of an enum.
+    1. Generics do not lower the performance.
+    1. Traits are similar to interfaces.
+    1. Traits can be provided as parameters: `pub fn notify(item: &impl Summary) {...`.
+    1. Multiple traits can be added: `pub fn notify(item: &(impl Summary + Display)) {`.
+    1. Where clause can be used to specify the traits of the generics:
+
+        ```rust
+        fn some_function<T, U>(t: &T, u: &U) -> i32
+
+        where
+            T: Display + Clone,
+            U: Clone + Debug,
+        {
+            ...
+        }
+        ```
+
+    1. Lifetime annotation prevent dangling references.
+    1. Lifetimes annotations may be needed to know when somethings goes out of scope. Syntax: `fn longest<'a>(x: &'a str, y: &'a str) -> &'a str`.
+    1. Lifetime annotations can also be added tu structs `struct ImportantExcerpt<'a> {`.
+    1. Lifetime annotations may not be needed thanks to elision rules done by Rust.
+    1. There is a special lifetime `'static` that makes the reference live through the entire program.
+
+1. Implement traversal matrix pattern.
+
+## Day 10
+
+1. Complete Udemy exercises:
+    1. Exercise H.
+    1. Invaders:
+        1. Add dependencies.
+        1. Setup audio.
+        1. Setup rendering and multithread.
+
+## Day 11
+
+1. Complete Udemy exercises:
+    1. Invaders:
+        1. Create player.
+        1. Create shots and make player shoot.
+        1. Create invaders.
+        1. Finish game with win/lose.
+1. Finish Udemy course Ultimate Rust Crash Course.
