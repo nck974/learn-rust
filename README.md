@@ -229,3 +229,61 @@ Buy: Ultimate Rust Crash Course
         1. Create invaders.
         1. Finish game with win/lose.
 1. Finish Udemy course Ultimate Rust Crash Course.
+
+## Day 12
+
+1. Chapter 11
+    1. A test is a function annotated with `#[test]`.
+    1. There are some built in macros for comparing like `assert!`.
+    1. It is possible to just return a `Result` instead of doing an assertion.
+    1. Tests can be multithreaded out of the box `cargo test -- --test-threads=1`.
+    1. Output can be displayed with `cargo test -- --show-output`.
+    1. The annotation `#[cfg(test)]` does not include the tests in the compiled artifact.
+    1. Integration tests are usually placed in a `test` folder.
+    1. Functions from `main.rs` can not be tested. The functionality should live in `lib.rs`.
+1. Start web API project `diogenes-rs`.
+
+## Day 13
+
+1. Chapter 12 (12.1, 12.2, 12.3):
+    1. Two dashes indicate that the commands passed are for the program and not for cargo: `cargo run -- <program args>`.
+    1. The first argument is the binary.
+    1. `std::fs` can be used to read files.
+    1. Using `.clone()` lowers the efficiency of the program. Is not ideal to use it to fix ownership problems.
+    1. `::new()` methods are expected to not fail, therefore has more meaning using something like `::build()` if it could crash.
+
+## Day 14
+
+1. Chapter 12 (12.4, 12.5, 12.6):
+    1. use `std::env` to get environment variables.
+    1. The macro `eprintln!` can be used to write to `stderr`.
+1. Chapter 13
+    1. Rust includes many functional programming features.
+    1. Closures in rust are anonymous functions.
+    1. The syntax for a closure is `|<args>| {<code>}`.
+    1. The type of the closures can be many times inferred and does not need to be explicitly written. But it can be done with `|a: i32| -> i32 {...}`.
+    1. Single line closures do not need brackets.
+    1. `move` can be used to force the closure to take ownership. This prevents the variable outliving its current function.
+    1. Closures can take different traits `Fn` (don't move, don't mutate),  `FnOnce` (move), `FnMut` (Don't move but mutate).
+    1. Iterators in Rust are lazy loaded.
+    1. An iterator implements the trait `Iterator`. The trait contains an associated type.
+    1. An iterator has to be mutable as it changes each time `next()` is called. If the references are also mutable then call `iter_mut()` instead of just `iter()`.
+    1. Some iterator methods may consume the iterator making it unusable after it is called.
+    1. Other methods yield a new iterator (like `map`).
+    1. Iterators are not slower than normal loops.
+
+## Day 15
+
+1. Chapter 14
+    1. There are two main profiles `dev` and `release` which can be configured in the `Cargo.toml`.
+    1. `opt-level` is the number of optimizations rust applies at compile time.
+    1. Documentation comments are done with `///`. Markdown can be used in them.
+    1. `cargo doc --open` Can be used to generate a document with the documentation.
+    1. The code in markdown blocks will be tested by `cargo test`.
+    1. Item (like the whole module) comments can be done with `//!`.
+    1. `pub use self::<path>;` can be used to change the structure that is exposed to an api user of the library.
+    1. If the library wants to be published the metadata can be written in `Cargo.toml`.
+    1. Yanking a version disables it for future use.
+    1. A `workspace` can be used to split the code in smaller modules. Each of those modules will have to be published as a separated crate.
+    1. Cargo can be extended with new commands by just adding them to the path, for example cargo-new-command can be executed as `cargo new-command`.
+        1. They will be automatically added to the `cargo --help` menu.
