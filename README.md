@@ -257,7 +257,7 @@ Buy: Ultimate Rust Crash Course
 1. Chapter 12 (12.4, 12.5, 12.6):
     1. use `std::env` to get environment variables.
     1. The macro `eprintln!` can be used to write to `stderr`.
-1. Chapter 13
+1. Chapter 13:
     1. Rust includes many functional programming features.
     1. Closures in rust are anonymous functions.
     1. The syntax for a closure is `|<args>| {<code>}`.
@@ -274,7 +274,7 @@ Buy: Ultimate Rust Crash Course
 
 ## Day 15
 
-1. Chapter 14
+1. Chapter 14:
     1. There are two main profiles `dev` and `release` which can be configured in the `Cargo.toml`.
     1. `opt-level` is the number of optimizations rust applies at compile time.
     1. Documentation comments are done with `///`. Markdown can be used in them.
@@ -287,3 +287,54 @@ Buy: Ultimate Rust Crash Course
     1. A `workspace` can be used to split the code in smaller modules. Each of those modules will have to be published as a separated crate.
     1. Cargo can be extended with new commands by just adding them to the path, for example cargo-new-command can be executed as `cargo new-command`.
         1. They will be automatically added to the `cargo --help` menu.
+
+## Day 16
+
+1. Chapter 15 (15.1, 15.2, 15.3, 15.4):
+    1. `&<type>` is a reference to a point in memory or pointer.
+    1. Smart pointers are not just the reference but also contain metadata.
+    1. Smart pointers allow to have more than one owner by keeping track of the umber of owners.
+    1. Smart pointer can not just borrow the data but own it.
+    1. `String` or  `Vec<T>` is a type of smart pointer.
+    1. Smart pointers are usually implemented with a `struct` that implement the traits:
+        1. `Deref`: Allow to behave like a reference.
+        1. `Drop`: Customize what happens when it goes out of scope.
+    1. A `Box<T>` allows to store memory in the heap instead of the stack where only a pointer is stored without performance overhead more than the storing.
+    1. A `Box` is useful for recursive objects where the compiler does not know how to get the size of the object.
+    1. Custom dereference can be implemented adding the trait `Deref` or `DerefMut` to a struct.
+    1. The `Drop` trait lets you implement what happens when something goes out of scope.
+    1. `Rc<T>` is a reference counter, when it does not contain any reference it can be cleaned up (only for single threaded).
+
+1. Implement sliding window pattern.
+
+## Day 17
+
+1. Chapter 15 (15.5, 15.6):
+    1. `RefCell<T>` can be used mutate immutable objects by telling the compiler not to enforce the rules for us.
+    1. Using `RefCell<T>` ownership/borrowing rules are enforce at runtime instead of compile time.
+    1. `RefCell<T>` only works in single threaded scenarios.
+    1. The value inside `RefCell<T>` can be mutated even if `RefCell` is immutable.
+    1. `RefCell<T>` can be combined with `Rc<T>` to have multiple owners with immutable references that can be mutated.
+    1. `Mutex<T>` is the thread safe alternative to `RefCell<T>`.
+1. Chapter 16 (16.1):
+    1. Rust is implemented with concurrency in mind.
+    1. A thread can be created with `thread::spawn`.
+    1. On the returned object `.join()` can be called to wait for the thread to finish.
+
+## Day 18
+
+1. Chapter 16 (16.2, 16.3, 16.4):
+    1. Threads can communicate with other threads with `channels`.
+    1. A channel is dropped if the receiver or the sender closes it.
+    1. `recv` blocks the thread, `try_recv` does not and returns a result.
+    1. In `std::sync::mpsc` multiple transmitters can be clone for one receiver.
+    1. `std::sync::Mutex` can be used to access data once per thread at a time.
+    1. `Arc` is an atomic counter that will work in multithread scenarios, like `Rc` in single thread.
+    1. `Mutex` is not free of dead locks (threads waiting to each other for ever).
+    1. In order for something to be thread safe it has to have the traits `Send` and `Sync`, or be composed of elements that have them.
+
+1. Chapter 17 (17.1)
+    1. Rust has some OOP characteristics like:
+        1. Structures with data an methods associated `trait` + `struct`.
+        1. Public `pub` methods that are private per default, therefore encapsulation for public APIs.
+        1. It does not have inheritance per se as it may not be considered an ideal programming pattern for rust.
