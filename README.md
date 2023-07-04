@@ -338,3 +338,25 @@ Buy: Ultimate Rust Crash Course
         1. Structures with data an methods associated `trait` + `struct`.
         1. Public `pub` methods that are private per default, therefore encapsulation for public APIs.
         1. It does not have inheritance per se as it may not be considered an ideal programming pattern for rust.
+
+## Day 19
+
+1. Chapter 17 (17.2, 17.3)
+    1. Dynamic typed vectors are possible thanks to creating a `Vec<dyn Trait>`, where `Trait` is the Trait that each element has de implement.
+    1. Some problems can be solved in rust by designing the problems to be caught by the compiler instead of using a traditional OOP solution.
+
+## Day 20
+
+1. Chapter 18:
+    1. A match consists of all possibilities, a wild card to match everything else is `_`. For example `_ => Some(1)`.
+    1. `if let` and `else if let` can be combined with different variables for more complexity that just a `match`. But not all branches are checked by the compiler.
+    1. Functions, variables, match/if/while, all can take a pattern.
+    1. Patterns can be:
+        1. Refutable: Patterns that can fail. (Like `if let x = Some(5)`, because it can be None).
+        1. Irrefutable: Match all possibilities (like `let x = 5`).
+    1. Multiple patterns can be used in a single place with an `OR` where the syntax is `|` instead of the usual `||`.
+    1. The same can be done with ranges `1..2`.
+    1. Warnings on unused variables can be ignored with a `_` prefixing the variable name.
+    1. Parts for a match can be ignored with `..` Example: `Point { x, .. } => println!("x is {}", x),`.
+    1. A match can contain an extra condition called match guard, as `Some(x) if x % 2 == 0`. The compiler will not look for exhaustiveness.
+    1. `@` operator allows to add an extra check within a parameter: `id: id_variable @ 3..=7`
