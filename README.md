@@ -86,7 +86,7 @@ Summary:
 1. Null does not exist in rust but `Option` with  `None` can be used for that purpose.
 1. Match can be used as a case that not only compares booleans but also types in the condition.
 1. Matches can be used to return values of parametrized enums, taking the parameter on the enum and doing some action.
-1. Matches must cover all branches (otherwise there is a compilation error.
+1. Matches must cover all branches (otherwise there is a compilation error).
 1. A last condition with a parameter name can be used to catch all exceptions.
 1. To avoid putting that last condition in some scenarios you can use the syntax `if let`.
 
@@ -360,3 +360,60 @@ Buy: Ultimate Rust Crash Course
     1. Parts for a match can be ignored with `..` Example: `Point { x, .. } => println!("x is {}", x),`.
     1. A match can contain an extra condition called match guard, as `Some(x) if x % 2 == 0`. The compiler will not look for exhaustiveness.
     1. `@` operator allows to add an extra check within a parameter: `id: id_variable @ 3..=7`
+
+## Day 21
+
+1. Chapter 19 (19.1):
+    1. Some memory safety ensured during runtime may limit some programs. Therefore rust allows you to write some unsafe code at your own risk.
+    1. To make a code unsafe wrap it with `unsafe`.
+    1. Is best practice to wrap the unsafe code with a public safe API.
+    1. The following is allowed in unsafe code:
+        1. Dereference raw pointers:
+            1. There is a new type row pointer: `*const` or `*mut`.
+            1. Can dereference that row pointer only in an unsafe block.
+        1. Calling an unsafe function.
+        1. Using extern functions: Is used to interact with other languages.
+        1. Modify a mutable static variable.
+        1. Implement unsafe traits.
+        1. Use unions (like structs used to interface with other languages).
+
+## Day 22
+
+1. Chapter 19 (19.2)
+    1. A `trait` can take a dynamic `type` that must not be known until the trait is implemented. Instead of generics this is just implemented with one type instead of multiple.
+    1. A default type can be given to the trait.
+    1. A collision of names between trait implementation and struct implementation can be solved calling `<trait>::<method>(&<struct_instance);`.
+    1. It is possible to have a trait dependency. Where trait A requires trait B, then struct C implements B instead of A.
+    1. Some new types can be defined as wrappers to be used within a trait.
+
+## Day 23
+
+1. Chapter 19 (19.3, 19.4)
+    1. New types can be used to create aliases of other types. For example: `type Kilometers = i32;`.
+    1. Also they can be used to reduce boilerplate in more complex types.
+    1. There is a "no type" `!` which indicates that a function will never return.
+    1. Functions can be passed as parameters with this syntax: `f: fn(i32) -> i32`.
+    1. It is also possible to return them as long as rust knows how much size it takes.
+
+## Day 24
+
+1. Chapter 19 (19.5)
+    1. Macros are code that write other code.
+    1. Macros are more complex than functions.
+    1. Declarative Macros:
+        1. Write something similar to `match`.
+    1. Procedural Macros:
+        1. Receive some code, operate on it, and return some other code.
+    1. Function like Macros:
+        1. Operate like a function but with more features, like using an unknown number of parameters.
+
+## Day 25
+
+1. Chapter 20:
+    1. Build a single threaded http server.
+
+## Day 26
+
+1. Chapter 20:
+    1. Make a single thread http server multithread.
+1. Finish rust book.
