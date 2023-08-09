@@ -417,3 +417,48 @@ Buy: Ultimate Rust Crash Course
 1. Chapter 20:
     1. Make a single thread http server multithread.
 1. Finish rust book.
+
+## Day 27
+
+1. Start project [`gpx-geo-filter`](https://github.com/nck974/gpx-geo-filter).
+    1. Read directory.
+    1. Extract first point in file.
+    1. Prefilter based on the distance.
+
+## Day 28
+
+1. Project `gpx-geo-filter`:
+    1. Refactor code into smaller modules.
+    1. Improve distance calculation from distance between coordinates to distance in km.
+    1. Write basic unit tests.
+    1. Create multithread filtering function. Speed reduced from 10sec to 2 sec for 200 files.
+    1. Change multithreading to use `rayon`.
+    1. Optimize regex by compiling it just one time.
+    1. On file reading skip lines that do not start with the expected trackpoint tag.
+
+## Day 29
+
+1. Project `gpx-geo-filter`:
+    1. Switch regex of complete file by XML parsing using `quick_xml`.
+    1. Bug found with different gpx formatting.
+
+## Day 30
+
+1. Project `gpx-geo-filter`:
+    1. Fix latitude and longitude order.
+    1. Read complete file using quick_xml.
+    1. Complete reading for 6000 files is around 40 seconds.
+    1. Split lists of prefiltering to skip checking files that already have a point in the area.
+    1. Copy the files to a new folder.
+    1. Total time with the latest changes including copying is around 4 seconds for 6000 files with 4 threads.
+
+## Day 31
+
+1. Project `gpx-geo-filter`:
+    1. Refactor code to only expose a single public library.
+    1. Refactor code to smaller more meaningful functions.
+
+## Day 32
+
+1. Project `gpx-geo-filter`:
+    1. Expose as a command line tool the needed parameters.
